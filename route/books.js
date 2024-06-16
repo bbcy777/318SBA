@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const users = require('../data/users.js');
 const comments = require('../data/comments.js');
+const books = require('../data/books.js')
 
 //GET route to get all books data
 router.get('/', (req, res) => {
@@ -32,21 +33,21 @@ router.get('/:id/comments', (req, res) => {
   if (req.query.userId) {
     foundComments = comments.filter(
       (comment) =>
-        comment.booksId == req.params.id && comment.userId == req.query.userId
+        comment.bookId == req.params.id && comment.userId == req.query.userId
     );
   } else {
     foundComments = comments.filter(
-      (comment) => comment.booksId == req.params.id
+      (comment) => comment.bookId == req.params.id
     );
   }
 
   res.json(foundComments);
 });
 
-// GET route to get a books by ID
+// GET route to get a book by ID
 router.get('/:id', (req, res, next) => {
   // Using the Array.find method to find the user with the same id as the one sent with the request
-  const books = books.find((p) => p.id == req.params.id);
+  const book = books.find((p) => p.id == req.params.id);
 
   const links = [
     {
@@ -61,7 +62,7 @@ router.get('/:id', (req, res, next) => {
     },
   ];
 
-  if (books) res.json({ books, links });
+  if (book) res.json({ book, links });
   else next();
 });
 

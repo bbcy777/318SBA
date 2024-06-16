@@ -65,19 +65,19 @@ app.get(`/api`, (req,res) => {
     });
 });
 
-// app.get('/users/new', (req, res) => {
-// res.send(`
-//     <div> 
-//         <h1>Create a User</h1>
-//         <form action="/api/users?api-key=perscholas"  method="POST">
-//         Name: <input type="text" name="name" /> <br />
-//         Username: <input type="text" name="username" /> <br />
-//         Email: <input type="text" name="email" /> <br />
-//         <input type="submit" value="Create User" />
-//         </form>
-//     </div>
-//     `);
-// });
+app.get('/users/new', (req, res) => {
+res.send(`
+    <div> 
+        <h1>User Login</h1>
+        <form  method="POST">
+        Name: <input type="text" name="name" /> <br />
+        Username: <input type="text" name="username" /> <br />
+        Email: <input type="text" name="email" /> <br />
+        <input type="submit" value="User Login" />
+        </form>
+    </div>
+    `);
+});
 // The only way this middlware runs is if a route handler function runs the "next()" function
 app.use((err, req, res, next) => {
     res.status(err.status || 404).json({ error: err.message });
