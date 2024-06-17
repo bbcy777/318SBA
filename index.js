@@ -13,8 +13,10 @@ app.use(express.json());
 
 
 //use the ejs template
+// const path = require('path');
 app.set(`view engine`, `ejs`);
 app.use(express.static(`styles`));
+// app.use(express.static(path.join(__dirname, `styles`)));
 
 // New logging middleware to help us keep track of
 // requests during testing!
@@ -65,19 +67,6 @@ app.get(`/api`, (req,res) => {
     });
 });
 
-app.get('/users/new', (req, res) => {
-res.send(`
-    <div> 
-        <h1>User Login</h1>
-        <form  method="POST">
-        Name: <input type="text" name="name" /> <br />
-        Username: <input type="text" name="username" /> <br />
-        Email: <input type="text" name="email" /> <br />
-        <input type="submit" value="User Login" />
-        </form>
-    </div>
-    `);
-});
 // The only way this middlware runs is if a route handler function runs the "next()" function
 app.use((err, req, res, next) => {
     res.status(err.status || 404).json({ error: err.message });

@@ -6,6 +6,15 @@
     <div>
         <h2>Book List</h2>
     </div>
+    <ul>
+        <% books.forEach(book => { %>
+           <li style="margin: 1em;">
+            <strong>Title: </strong><%= book.title %><br>
+            <strong>Author: </strong><%= book.author %><br>
+            <strong>Rating: </strong><%= book.rating %><br>
+           </li> 
+        <% }); %>
+    </ul>
     <%- include(`./partials/footer.ejs`) %>
 </body>
 </html>

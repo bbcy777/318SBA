@@ -4,8 +4,13 @@ const users = require('../data/users.js');
 const comments = require('../data/comments.js');
 const books = require('../data/books.js')
 
-//GET route to get all books data
-router.get('/', (req, res) => {
+//GET route to get all books in EJS template
+
+router.get(`/`, (req, res) => {
+  res.render('books', {title: "Book List", books: books });
+});
+//get route to show REST links
+router.get('/api', (req, res) => {
   const links = [
     {
       href: 'books/:id',
