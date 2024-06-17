@@ -3,7 +3,16 @@
 <%- include(`./partials/header.ejs`) %>
 <body>
     <%- include(`./partials/nav.ejs`) %>
-
+    <div>
+        <h3>All Comments</h3>
+    </div>
+    <ul>
+        <% comments.forEach((comment) => { %>
+            <li>
+                <strong></strong>
+            </li>
+        <% }); %>
+    </ul>
     <div class="create-comments content">
         <form>
             <label for="book">Book Name:</label>
